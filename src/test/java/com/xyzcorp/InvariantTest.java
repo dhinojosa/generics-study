@@ -16,8 +16,8 @@ public class InvariantTest {
         American american = americans.get(1);            //producer
 
         americans.add(new American());                   //consumer
-        americans.add(new NorthCarolinian());            //consumer
-        americans.add(new Raleighite());                 //consumer
+        americans.add(new Massachusettsan());            //consumer
+        americans.add(new Bostonian());                 //consumer
     }
 
     //9. Invariant Method Calls
@@ -37,15 +37,15 @@ public class InvariantTest {
         //americans.add(new Object());                         //won't work
         //americans.add(new NorthAmerican());                  //won't work
         americans.add(new American());                         //consumer
-        americans.add(new NorthCarolinian());                  //consumer
-        americans.add(new Raleighite());                       //consumer
+        americans.add(new Massachusettsan());                  //consumer
+        americans.add(new Bostonian());                       //consumer
 
         Object object = americans.get(1);                      //producer
         Person person = americans.get(1);                      //producer
         NorthAmerican northAmerican = americans.get(1);        //producer
         American american = americans.get(1);                  //producer
-        //NorthCarolinian northCarolinian = americans.get(1);  //won't work
-        //Raleighite raleighite = americans.get(1);            //won't work
+        //Massachusettsan massachusettsan = americans.get(1);  //won't work
+        //Bostonian bostonian = americans.get(1);            //won't work
     }
 
 }

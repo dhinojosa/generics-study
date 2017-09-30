@@ -23,7 +23,6 @@ public class SafeVarArgsTest {
     //22. Varargs Scenario
     @Test
     public void testVarArgs() {
-
         process(Arrays.asList("Foo", "Bar", "Baz"), Arrays.asList("Zoom", "Room", "Voom"));
     }
 }

@@ -1,9 +1,11 @@
 package com.xyzcorp;
 
+import org.jetbrains.annotations.NotNull;
 import org.junit.Test;
 
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.Objects;
 import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -19,7 +21,8 @@ public class RecursiveTypeBoundsTest {
         }
 
         @Override
-        public int compareTo(Foo o) {
+        public int compareTo(@NotNull Foo o) {
+            Objects.requireNonNull(o, "cannot compare to null");
             if (o == this) return 0;
             return Integer.compare(i, o.i);
         }

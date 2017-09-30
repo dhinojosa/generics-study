@@ -1,7 +1,5 @@
 package com.xyzcorp;
 
-import com.xyzcorp.bridge.MyNode;
-import com.xyzcorp.bridge.Node;
 import com.xyzcorp.subclassing.MySafeNode;
 import org.junit.Test;
 

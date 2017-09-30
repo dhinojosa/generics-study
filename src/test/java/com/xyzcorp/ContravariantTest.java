@@ -15,8 +15,8 @@ public class ContravariantTest {
     //You know the boundary but you don't know the specifics
     public void processContravariantList(List<? super American> americans) {
           americans.add(new American());
-          americans.add(new NorthCarolinian());
-          americans.add(new Raleighite());
+          americans.add(new Massachusettsan());
+          americans.add(new Bostonian());
           americans.add(null);
           Object o = americans.get(0);
     }
@@ -25,7 +25,7 @@ public class ContravariantTest {
     @Test
     public void testContravariantMethod() throws Exception {
         processContravariantList(Arrays.<Object>asList(new Object(), new Object()));
-        processContravariantList(Arrays.<American>asList(new American(), new Raleighite()));
+        processContravariantList(Arrays.<American>asList(new American(), new Bostonian()));
     }
 
     //17. Contravariant Assignment
@@ -37,15 +37,15 @@ public class ContravariantTest {
 //       Person person = americans.get(0);                   //nope
 //        NorthAmerican northAmerican = americans.get(0);     //nope
 //        American american = americans.get(0);               //nope
-//        NorthCarolinian northCarolinian = americans.get(0); //nope
-//        Raleighite raleighite = americans.get(0);           //nope
+//        Massachusettsan Massachusettsan = americans.get(0); //nope
+//        Bostonian bostonian = americans.get(0);           //nope
 
 //        americans.add(new Object());
 //        americans.add(new Person());
 //        americans.add(new NorthAmerican());
         americans.add(new American());
-        americans.add(new NorthCarolinian());
-        americans.add(new Raleighite());
+        americans.add(new Massachusettsan());
+        americans.add(new Bostonian());
         americans.add(null);
     }
 }

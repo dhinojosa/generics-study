@@ -25,29 +25,29 @@ public class CovariantTest {
     //11. Process Covariant List
     @Test
     public void testCovariantAmericanList() throws Exception {
-        List<NorthCarolinian> americans = new ArrayList<>();
+        List<Massachusettsan> americans = new ArrayList<>();
         processCovariantList(americans);
     }
 
     //12. Process Covariant Assignment
     @Test
     public void testCovariantAssignment() throws Exception {
-        List<? extends American> people = new ArrayList<Raleighite>();
+        List<? extends American> people = new ArrayList<Bostonian>();
         Object object = people.get(0);
         Person person = people.get(0);
         NorthAmerican northAmerican = people.get(0);
         American american = people.get(0);
 
 
-        //NorthCarolinian northCarolinian= people.get(0);
-        //Raleighite ralieghite= people.get(0);
+        //Massachusettsan massachusettsan= people.get(0);
+        //Bostonian ralieghite= people.get(0);
 
 //        people.add(new Object());
 //        people.add(new Person());
 //        people.add(new NorthAmerican());
 //        people.add(new American());
-//        people.add(new NorthCarolinian());
-//        people.add(new Raleighite());
+//        people.add(new Massachusettsan());
+//        people.add(new Bostonian());
         people.add(null); //special case
     }
 
@@ -62,22 +62,22 @@ public class CovariantTest {
     //13. Process Covariant Assignment
     @Test
     public void testCovariantPersonList() throws Exception {
-        List<? extends Person> people = Arrays.<Raleighite>asList(new Raleighite(), new Raleighite());
+        List<? extends Person> people = Arrays.<Bostonian>asList(new Bostonian(), new Bostonian());
         processCovariantPersonList(people);
     }
 
     //14. Process Covariant Assignment
     @Test
     public void testMixMatchedPersonList() throws Exception {
-        List<? extends Raleighite> raleighites = Arrays.asList(new Raleighite(), new Raleighite());
-        List<? extends American> people = raleighites;
+        List<? extends Bostonian> bostonians = Arrays.asList(new Bostonian(), new Bostonian());
+        List<? extends American> people = bostonians;
         processCovariantPersonList(people);
     }
 
     public void processCovariantObjectList(List<? extends Object> people) {
         Object object = people.get(0);
         //Person person = people.get(0);
-        //Raleighite raleighite = people.get(0);
+        //Bostonian bostonian = people.get(0);
 
         people.add(null);
     }
@@ -85,7 +85,7 @@ public class CovariantTest {
     //15. Process Covariant Assignment with Object List
     @Test
     public void testProcessCovariantObjectList() throws Exception {
-        List<?> objects = Arrays.<Raleighite>asList(new Raleighite(), new Raleighite());
+        List<?> objects = Arrays.<Bostonian>asList(new Bostonian(), new Bostonian());
         List<?> objects2 = Arrays.<Object>asList(new Object(), new Object());
         processCovariantObjectList(objects);
         processCovariantObjectList(objects2);
