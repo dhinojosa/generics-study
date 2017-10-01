@@ -1,4 +1,4 @@
 package com.xyzcorp.people;
 
-public class ChapelHillian extends NorthCarolinian {
+public class ChapelHillian extends Massachussettsan {
 }

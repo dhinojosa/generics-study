@@ -1,12 +1,9 @@
 package com.xyzcorp;
 
 import com.xyzcorp.people.American;
-import com.xyzcorp.people.NorthCarolinian;
+import com.xyzcorp.people.Massachussettsan;
 import com.xyzcorp.people.Raleighite;
 import org.junit.Test;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class ArraysTest {
 
@@ -14,8 +11,8 @@ public class ArraysTest {
     //18. Arrays naturally covariant
     @Test
     public void testArraysAreNaturallyCovariant() throws Exception {
-        American[] americans = new NorthCarolinian[]{};
-        americans[0] = new NorthCarolinian();
+        American[] americans = new Massachussettsan[]{};
+        americans[0] = new Massachussettsan();
         americans[1] = new Raleighite();
         American american = americans[0];
     }

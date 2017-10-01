@@ -5,6 +5,7 @@ import org.junit.Test;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.function.Function;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -21,6 +22,7 @@ public class GenericsBasicsTest {
         Object object = list.get(0); //Object
         if (object instanceof String) {
             String string = (String) object;
+            string.substring(0, 1); //Substring belongs to String
         }
     }
 
@@ -32,7 +34,7 @@ public class GenericsBasicsTest {
         words.add("Hello ");
         words.add("world!");
         String s = ((String) words.get(0)) +
-                ((String) words.get(1));
+                   ((String) words.get(1));
     }
 
     //3. Demo: No Casting of Raw Types After
@@ -73,7 +75,8 @@ public class GenericsBasicsTest {
 
     //7. Demo: Static
     @Test
-    public void testOverrideStaticGenericTypes() throws Exception {
+    public void testOverrideStaticGenericTypes()
+            throws Exception {
         Number n  = Arrays.<Number>asList(5, 1, 3, 5, 6, 10).get(0);
         assertThat(n).isInstanceOf(Number.class);
     }
@@ -88,8 +91,23 @@ public class GenericsBasicsTest {
                 new ArrayList<Long>().getClass());
     }
 
+    /**
+     * In this test apply map and see the signature used in
+     * the IDE for an IDE of how and when generic wildcards
+     * are used
+     **/
     @Test
     public void testStream() throws Exception {
-        //Arrays.asList(1,2,3).stream()
+        Arrays.asList(1,2,3).stream();
+
     }
+
+
+
+
+
+
+
+
+
 }

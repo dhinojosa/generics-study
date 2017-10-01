@@ -6,11 +6,11 @@ import org.junit.Test;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class CovariantTest {
-
 
     public void processCovariantList(List<? extends American> americans) {
         Object object = americans.get(0);
@@ -89,5 +89,32 @@ public class CovariantTest {
         List<?> objects2 = Arrays.<Object>asList(new Object(), new Object());
         processCovariantObjectList(objects);
         processCovariantObjectList(objects2);
+    }
+
+
+    public Number collectionWithSuper(List<? super Number> numbers, int seed) {
+        double total = seed;
+        for (int i  = 0; i < numbers.size(); i ++) {
+            numbers.add(i + 10);
+        }
+        return total;
+    }
+
+    public Number collectionWithExtends(List<? extends Number> integers, int seed) {
+        double total = seed;
+        for (int i  = 0; i < integers.size(); i ++) {
+            total += integers.get(i).intValue() + 1;
+        }
+        return total;
+    }
+
+    /**
+     * The following test was created stemming from questions
+     * from the Boston NFJS 2017-09-23
+     */
+    @Test
+    public void testRulesWithFlexability() {
+        collectionWithSuper(Arrays.<Object>asList(1,2,3,4,5), 30);
+        collectionWithExtends(Arrays.<Integer>asList(1,2,3,4,5), 30);
     }
 }

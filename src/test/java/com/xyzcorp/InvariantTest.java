@@ -17,7 +17,7 @@ public class InvariantTest {
 
         americans.add(new American());                   //consumer
         americans.add(new Massachusettsan());            //consumer
-        americans.add(new Bostonian());                 //consumer
+        americans.add(new Bostonian());                  //consumer
     }
 
     //9. Invariant Method Calls
@@ -25,7 +25,7 @@ public class InvariantTest {
     public void testInvariantMethod() throws Exception {
         List<American> americans = new ArrayList<>();
         americans.add(new American());        //Yes!
-        americans.add(new SouthCarolinian()); //Yes!
+        americans.add(new Massachusettsan()); //Yes!
         processInvariantList(americans);
     }
 
