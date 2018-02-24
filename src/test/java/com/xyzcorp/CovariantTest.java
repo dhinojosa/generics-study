@@ -10,28 +10,29 @@ import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+@SuppressWarnings(value = {"WeakerAccess", "unused", "RedundantTypeArguments"})
 public class CovariantTest {
 
-    public void processCovariantList(List<? extends American> americans) {
-        Object object = americans.get(0);
-        Person person = americans.get(0);
-        NorthAmerican northAmerican = americans.get(0);
-        American american = americans.get(0);
+    public void processCovariantList(List<? extends NorthAmerican> northAmericansOrLower) {
+        Object object = northAmericansOrLower.get(0);
+        Person person = northAmericansOrLower.get(0);
+        NorthAmerican northAmerican = northAmericansOrLower.get(0);
 
         //only a null
-        americans.add(null);
+
+        northAmericansOrLower.add(null);
     }
 
     //11. Process Covariant List
     @Test
-    public void testCovariantAmericanList() throws Exception {
-        List<Massachusettsan> americans = new ArrayList<>();
-        processCovariantList(americans);
+    public void testCovariantAmericanList() {
+        List<Wisconsinite> wisconsinite = new ArrayList<>();
+        processCovariantList(wisconsinite);
     }
 
     //12. Process Covariant Assignment
     @Test
-    public void testCovariantAssignment() throws Exception {
+    public void testCovariantAssignment() {
         List<? extends American> people = new ArrayList<Bostonian>();
         Object object = people.get(0);
         Person person = people.get(0);
@@ -61,14 +62,14 @@ public class CovariantTest {
 
     //13. Process Covariant Assignment
     @Test
-    public void testCovariantPersonList() throws Exception {
+    public void testCovariantPersonList() {
         List<? extends Person> people = Arrays.<Bostonian>asList(new Bostonian(), new Bostonian());
         processCovariantPersonList(people);
     }
 
     //14. Process Covariant Assignment
     @Test
-    public void testMixMatchedPersonList() throws Exception {
+    public void testMixMatchedPersonList() {
         List<? extends Bostonian> bostonians = Arrays.asList(new Bostonian(), new Bostonian());
         List<? extends American> people = bostonians;
         processCovariantPersonList(people);

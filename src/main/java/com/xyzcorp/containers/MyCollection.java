@@ -7,5 +7,4 @@ public class MyCollection<T> {
     public MyCollection(T... items) { //varargs
         this.items = items;
     }
-
 }

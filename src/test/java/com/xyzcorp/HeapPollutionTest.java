@@ -7,7 +7,13 @@ import java.util.List;
 
 public class HeapPollutionTest {
 
-    //21: HeapPollutionTest
+    /**
+     * 21. Heap Pollution Test
+     * In this case, let's say a mishap was performed within our code
+     * and we accidentally assigned a generic List to the raw List, by
+     * bringing the type back as a generic collection this would be a heap
+     * pollution because there is no check.
+     */
     @Test
     @SuppressWarnings({"unchecked", "UnnecessaryLocalVariable"})
     public void testTypePollution() {

@@ -22,7 +22,7 @@ public class Box<E> {
 
         U apply = function.apply(e);
 
-        return new Box<U>(apply);
+        return new Box<>(apply);
     }
 
     public static <A> Box<A> of(A e2) {

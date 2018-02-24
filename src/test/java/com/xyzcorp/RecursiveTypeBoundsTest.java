@@ -12,13 +12,13 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class RecursiveTypeBoundsTest {
 
-    //Clean this up
+    /*
+     * Change Comparable<Foo> to just Comparable and see the results
+     */
     public class Foo implements Comparable<Foo> {
         private int i = 0;
 
-        public Foo(int i) {
-            this.i = i;
-        }
+        Foo(int i) { this.i = i; }
 
         @Override
         public int compareTo(@NotNull Foo o) {
@@ -37,7 +37,8 @@ public class RecursiveTypeBoundsTest {
         assertThat(foo.compareTo(foo2)).isLessThan(0);
     }
 
-    public static <T extends Comparable<T>> Optional<T> myMax(Collection<T> items) {
+    private static <T extends Comparable<T>> Optional<T> myMax(Collection<T>
+                                                                       items) {
         T result = null;
         for (T item : items) {
             if (result == null || item.compareTo(result) > 0) result = item;
