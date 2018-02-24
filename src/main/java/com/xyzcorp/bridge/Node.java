@@ -10,4 +10,9 @@ public class Node<T> {
         System.out.println("Node.setData");
         this.data = data;
     }
+
+    public T getData() {
+        System.out.println("Node.setData");
+        return data;
+    }
 }
