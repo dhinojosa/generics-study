@@ -1,4 +1,4 @@
 package com.xyzcorp.people;
 
-public class Floridian {
+public class Floridian extends American {
 }

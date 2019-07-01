@@ -18,38 +18,56 @@ public class InvariantTest {
         americans.add(new American());                   //consumer
         americans.add(new Massachusettsan());            //consumer
         americans.add(new Coloradan());                  //consumer
+        americans.add(new StLouisan());                  //consumer
         americans.add(new Denverite());                  //consumer
+        americans.add(new NorthCarolinian());            //consumer
+        americans.add(new Bostonian());                  //consumer
+        americans.add(new Minnesotan());                 //consumer
+        americans.add(new Wisconsinite());
+        americans.add(new Madisonian());
+        americans.add(new SaltLaker());
+        americans.add(new Utahn());
+        americans.add(new Texan());
         americans.add(null);                             //consumer
     }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    /*
+     *
+     * Space is intentional
+     *
+     *
+     *
+     *
+     *
+     *
+     *
+     *
+     *
+     *
+     *
+     *
+     *
+     *
+     *
+     *
+     *
+     *
+     *
+     */
 
 
     //9. Invariant Method Calls
     @Test
     public void testInvariantMethod() throws Exception {
-        processInvariantList(Arrays.asList(new American(), new Wisconsinite()
-                , new Madisonian(), new Milwaukeean(), new SanFranciscan()));
+        List<American> americans = new ArrayList<>();
+        americans.add(new American());
+        americans.add(new Wisconsinite());
+        americans.add(new Madisonian());
+        americans.add(new Milwaukeean());
+        americans.add(new StLouisan());
+        americans.add(new SanFranciscan());
+        processInvariantList(americans);
     }
 
 
@@ -70,7 +88,7 @@ public class InvariantTest {
         American american = americans.get(1);                  //producer
         //Massachusettsan massachusettsan = americans.get(1);  //won't work
         //Bostonian bostonian = americans.get(1);              //won't work
-        //Madisonian madisonian = americans.get(0);
+        //Madisonian madisonian = americans.get(0);            //won't work
     }
 
 }

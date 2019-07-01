@@ -1,4 +1,4 @@
 package com.xyzcorp.people;
 
-public class Missourian {
+public class Missourian extends American {
 }

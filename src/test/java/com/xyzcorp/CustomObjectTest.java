@@ -11,8 +11,8 @@ public class CustomObjectTest {
     @Test
     public void testBoxCreation() throws Exception {
         Box<Integer> box = new Box<>(4);
-        box.map(e -> e + 10);
-        assertThat(box.getContent()).isEqualTo(14);
+        Box<Integer> result = box.map(e -> e + 10);
+        assertThat(result.getContent()).isEqualTo(14);
     }
 
     @Test

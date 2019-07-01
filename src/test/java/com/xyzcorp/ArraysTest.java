@@ -6,6 +6,8 @@ import org.junit.Test;
 import java.util.ArrayList;
 import java.util.List;
 
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
+
 public class ArraysTest {
 
     //18. Arrays naturally covariant
@@ -13,13 +15,19 @@ public class ArraysTest {
     public void testArraysAreNaturallyCovariant() throws Exception {
         American[] americans = new Massachusettsan[3];
         americans[0] = new Massachusettsan();
-        americans[1] = new Raleighite();
-        americans[2] = new Wisconsinite();
+
+        // Keep in mind this is runtime error. At compile time
+        // this is still allowed.
+        assertThatThrownBy(() -> {
+            americans[1] = new Raleighite();
+            americans[2] = new Wisconsinite();
+        }).isInstanceOf(ArrayStoreException.class);
+
         American american = americans[0];
         Person person = americans[0];
         Object object = americans[0];
 
-        //The following will not work
+        //The following will not work at compile time
         //Massachusettsan massachusettsan = americans[0];
         //Raleighite raleighite = americans[1];
         //Wisconsinite wisconsinite = americans[2];
@@ -34,7 +42,9 @@ public class ArraysTest {
     @Test
     public void testArrayStoreException() throws Exception {
         Object[] objectArray = new String[10];
-        objectArray[0] = new Long(0L);
+        assertThatThrownBy(() -> {
+            objectArray[0] = new Long(0L);
+        }).isInstanceOf(ArrayStoreException.class);
     }
 
     /**

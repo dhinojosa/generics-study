@@ -4,6 +4,8 @@ import com.xyzcorp.subclassing.MySafeNode;
 import com.xyzcorp.subclassing.Node;
 import org.junit.Test;
 
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
+
 public class SubclassTest {
 
     /**
@@ -14,6 +16,6 @@ public class SubclassTest {
     @Test
     public void testIssueWithSubclassingGenerics() {
         Node<Integer> mySafeNode = new MySafeNode<>(40);
-        mySafeNode.setData(null);
+        assertThatThrownBy(() -> mySafeNode.setData(null)).isInstanceOf(NullPointerException.class);
     }
 }

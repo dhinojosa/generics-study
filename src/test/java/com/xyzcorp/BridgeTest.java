@@ -19,6 +19,7 @@ public class BridgeTest {
     @Test
     public void testBridgeMethod() {
         Node<Integer> base = new MyNode(5);
-        assertThat(base.getData()).isEqualTo(5);
+        Integer data = base.getData();
+        assertThat(data).isEqualTo(5);
     }
 }

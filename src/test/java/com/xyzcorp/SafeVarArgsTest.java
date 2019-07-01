@@ -6,6 +6,8 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
+
 public class SafeVarArgsTest {
 
     /*
@@ -30,7 +32,9 @@ public class SafeVarArgsTest {
         array[0] = tmpList;
 
         // Oh no, ClassCastException at runtime!
-        String s = args[0].get(0);
+        assertThatThrownBy(() -> {
+            String s = args[0].get(0);
+        }).isInstanceOf(ClassCastException.class);
     }
 
     @Test

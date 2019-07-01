@@ -4,12 +4,10 @@ import com.xyzcorp.people.*;
 import org.junit.Test;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 @SuppressWarnings("WeakerAccess")
 public class ContravariantTest {
-
     //You know the boundary but you don't know the specifics
     public void processContravariantList(List<? super American>
                                                  americans) {
@@ -22,48 +20,91 @@ public class ContravariantTest {
         americans.add(new Raleighite());
         americans.add(new Denverite());
         americans.add(new Coloradan());
-        //americans.add(new European()); Nein!
-
+        americans.add(new Missourian());
+        americans.add(new StLouisan());
+        //americans.add(new European()); //Nein!
         //americans.add(new Person());
-
         americans.add(null);
 
         Object o = americans.get(0);
+        //American a = americans.get(0);
     }
+
+    /*
+     *
+     * Space is intentional
+     *
+     *
+     *
+     *
+     *
+     *
+     *
+     *
+     *
+     *
+     *
+     *
+     *
+     *
+     *
+     *
+     *
+     *
+     *
+     */
 
     //16. Contravariant Method
     @Test
     public void testContravariantMethod() {
-        processContravariantList(
-                Arrays.<Object>asList(new Object(), new Object()));
-        processContravariantList(
-                Arrays.<Person>asList(new Person(), new Person()));
-        processContravariantList(
-                Arrays.<NorthAmerican>asList(new NorthAmerican(), new NorthAmerican()));
-        processContravariantList(
-                Arrays.<American>asList(new American(), new Bostonian()));
-        //processContravariantList(
-        //        Arrays.<Bostonian>asList(new Bostonian(), new Bostonian()));
+        List<Object> objects = new ArrayList<>();
+        objects.add(new Object());
+        objects.add(new Object());
+        processContravariantList(objects);
+
+        List<Person> people = new ArrayList<>();
+        objects.add(new Person());
+        objects.add(new Canadian());
+        objects.add(new American());
+        processContravariantList(people);
+
+
+        List<NorthAmerican> northAmericans = new ArrayList<>();
+        northAmericans.add(new NorthAmerican());
+        northAmericans.add(new NorthAmerican());
+        processContravariantList(northAmericans);
+
+
+        List<American> americans = new ArrayList<>();
+        americans.add(new American());
+        americans.add(new American());
+        processContravariantList(americans);
     }
 
     //17. Contravariant Assignment
     @Test
     public void testContravariantAssignment() {
-        List<? super American> americans = new ArrayList<Person>();
+        ArrayList<Person> people = new ArrayList<>();
+        people.add(new Canadian());
+        people.add(new American());
+        people.add(new Coloradan());
+        List<? super American> americans = people;
+
         Object object = americans.get(0); //special case
 
-//       Person person = americans.get(0);                   //nope
-//        NorthAmerican northAmerican = americans.get(0);     //nope
-//        American american = americans.get(0);               //nope
-//        Massachusettsan Massachusettsan = americans.get(0); //nope
-//        Bostonian bostonian = americans.get(0);           //nope
-
-//        americans.add(new Object());
-//        americans.add(new Person());
-//        americans.add(new NorthAmerican());
+        //       Person person = americans.get(0);                   //nope
+        //       NorthAmerican northAmerican = americans.get(0);     //nope
+        //       American american = americans.get(0);               //nope
+        //       Massachusettsan Massachusettsan = americans.get(0); //nope
+        //       Bostonian bostonian = americans.get(0);           //nope
+        //
+        //       americans.add(new Object());
+        //       americans.add(new Person());
+        //       americans.add(new NorthAmerican());
         americans.add(new American());
         americans.add(new Massachusettsan());
         americans.add(new Bostonian());
+        americans.set(1, new NewMexican());
         americans.add(null);
     }
 }

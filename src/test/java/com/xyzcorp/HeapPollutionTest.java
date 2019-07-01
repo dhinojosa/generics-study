@@ -4,6 +4,7 @@ import org.assertj.core.util.Lists;
 import org.junit.Test;
 
 import java.util.List;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class HeapPollutionTest {
 
@@ -19,6 +20,7 @@ public class HeapPollutionTest {
     public void testTypePollution() {
         List ln = Lists.<Number>newArrayList(5,1,3,5,6,10); //Converting to RawType!
         List<String> ls = ln;  // unchecked warning
-        String s = ls.get(0); // ClassCastException
+        assertThatThrownBy(() -> {String s = ls.get(0);})
+                .isInstanceOf(ClassCastException.class);
     }
 }

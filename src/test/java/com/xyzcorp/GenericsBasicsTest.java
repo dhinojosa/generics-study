@@ -7,8 +7,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.function.Consumer;
 import java.util.function.Function;
-import java.util.function.Predicate;
-import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -44,10 +43,13 @@ public class GenericsBasicsTest {
     //3. Demo: No Casting of Raw Types After
     @Test
     public void testEliminationOfCasting() {
-        List<String> words = new ArrayList<>();
+        //JDK11
+        //final var words = new ArrayList<String>();
+        List<String> words = new ArrayList<>(); //JDK 5- 10
         words.add("Hello ");
         words.add("world!");
-        String s = words.get(0).substring(1, 2) + words.get(1).substring(2, 4);
+        String s = words.get(0).substring(1, 2) +
+                words.get(1).substring(2, 4);
         System.out.println(s);
     }
 
@@ -55,7 +57,7 @@ public class GenericsBasicsTest {
     @Test
     public void testAutomaticBoxingOfPrimitivesBefore() {
         List<Integer> ints = new ArrayList<>();
-        ints.add((Integer) 1);
+        ints.add(new Integer(1));
         int n = ints.get(0).intValue();
         System.out.println(n);
     }
@@ -82,8 +84,7 @@ public class GenericsBasicsTest {
     //7. Demo: Static
     @Test
     public void testOverrideStaticGenericTypes() {
-        Number n = Arrays.<Number>asList(5, 1, 3, 3, 6, 10)
-                .get(0);
+        Number n = Arrays.<Number>asList(5, 1, 3, 3, 6, 10).get(0);
         assertThat(n).isInstanceOf(Number.class);
     }
 
@@ -97,33 +98,26 @@ public class GenericsBasicsTest {
                 new ArrayList<Long>().getClass());
     }
 
-    /**
-     * In this test apply map and see the signature used in
-     * the IDE for an IDE of how and when generic wildcards
-     * are used
-     **/
+
     @Test
     public void testStream() {
-        Arrays.asList("One", "Two", "Three", "Four")
-              .stream()
-              .filter(new Predicate<String>() {
+        /*
+            View the types we start with List<String>
+            Then we have a Stream<String
+            Then can fit a function of <CharSequence> and <Number>
+         */
+        Stream.of("One", "Two", "Three", "Four")
+              .map(new Function<CharSequence, Number>() {
                   @Override
-                  public boolean test(String s) {
-                      return !s.isEmpty();
-                  }
-              })
-              .map(new Function<String, Integer>() {
-                  @Override
-                  public Integer apply(String s) {
+                  public Integer apply(CharSequence s) {
                       return s.length();
                   }
-              }).forEach(new Consumer<Object>() {
-            @Override
-            public void accept(Object o) {
-
-            }
-        });
+              })
+              .forEach(new Consumer<Object>() {
+                  @Override
+                  public void accept(Object o) {
+                      System.out.println(o);
+                  }
+              });
     }
-
-
 }

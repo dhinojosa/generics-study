@@ -25,7 +25,7 @@ object KotlinReification {
      *     draw from the byte code the type
      *     https://stackoverflow.com/questions/44471284/when-to-use-an-inline-function-in-kotlin
      */
-    inline fun <reified N> whoAmI(list:List<N>):String? {
-        return N::class.qualifiedName
+    inline fun <reified N> whoAmI(list:List<N>):String {
+        return "List contains $list and is of type: ${N::class.qualifiedName}"
     }
 }

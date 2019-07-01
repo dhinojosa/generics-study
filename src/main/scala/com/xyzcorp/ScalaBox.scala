@@ -2,7 +2,8 @@ package com.xyzcorp
 
 
 class ScalaBox[+E](val e: E) {
-  def map[U](f: E => U): ScalaBox[U] = new ScalaBox(f.apply(e))
+  def map[U](f: E => U): ScalaBox[U]
+     = new ScalaBox(f.apply(e))
 }
 
 object ScalaCollectionUtil {

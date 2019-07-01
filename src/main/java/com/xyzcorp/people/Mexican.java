@@ -1,4 +1,4 @@
 package com.xyzcorp.people;
 
-public class Mexican {
+public class Mexican extends NorthAmerican {
 }
