@@ -1,4 +1,4 @@
 package com.xyzcorp.people;
 
-public class StLouisan {
+public class StLouisan extends Missourian {
 }

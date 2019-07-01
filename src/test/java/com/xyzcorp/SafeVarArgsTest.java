@@ -22,7 +22,7 @@ public class SafeVarArgsTest {
         System.out.println(args.getClass().getName());
         System.out.println(args.getClass().getComponentType());
 
-        //Masking the List
+        //Masking the List of String, it is after all, a List<String>
         Object[] array = args;
         List<Integer> tmpList = Collections.singletonList(42);
 
